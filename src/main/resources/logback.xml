@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/> <!-- include configurare implicită Spring Boot -->
+
+    <!-- Adaugă aici apenderele și logger-ii specifici aplicației tale -->
+
+    <logger name="com.example.myapp" level="DEBUG"/> <!-- Exemplu de configurare pentru un pachet specific -->
+
+    <!-- Configurare pentru afișarea informațiilor de la Spring -->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
