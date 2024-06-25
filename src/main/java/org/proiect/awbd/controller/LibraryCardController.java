@@ -21,7 +21,7 @@ public class LibraryCardController {
         this.libraryCardService = libraryCardService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<LibraryCard>> getAllLibraryCards() {
         List<LibraryCard> libraryCards = libraryCardService.getAllLibraryCards();
         return ResponseEntity.ok(libraryCards);
@@ -34,7 +34,7 @@ public class LibraryCardController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<LibraryCard> createLibraryCard(@RequestBody LibraryCard libraryCard) {
         LibraryCard createdLibraryCard = libraryCardService.saveLibraryCard(libraryCard);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLibraryCard);
