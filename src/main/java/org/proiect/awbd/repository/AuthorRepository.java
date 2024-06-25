@@ -12,6 +12,6 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
 
     Optional<Author> findByName(String name);
 
-    // Alte metode specifice, dacă este cazul
+    // Alte metode +++++++
 }
 

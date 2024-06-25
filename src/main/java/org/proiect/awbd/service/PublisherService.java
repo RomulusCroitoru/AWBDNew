@@ -44,7 +44,6 @@ public class PublisherService {
             publisherRepository.deleteById(id);
         } catch (Exception e) {
             logger.error("Error deleting publisher with id {}: {}", id, e.getMessage());
-            // Poți arunca o excepție proprie sau trata eroarea în alt mod corespunzător aplicației tale
             throw new RuntimeException("Failed to delete publisher");
         }
     }

@@ -32,8 +32,7 @@ public class BookMapper {
         Book book = new Book();
         book.setId(bookDTO.getId());
         book.setTitle(bookDTO.getTitle());
-        // În mod normal, nu am transforma ID-urile înapoi în obiecte complexe (Author, Library, etc.) într-un Mapper
-        // întrucât Mapper-urile sunt utilizate în principal pentru transformări între DTO-uri și entități
+
         return book;
     }
 }

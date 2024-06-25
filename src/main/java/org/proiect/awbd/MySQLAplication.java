@@ -15,10 +15,10 @@ public class MySQLAplication {
         SpringApplication.run(MySQLAplication.class, args);
     }
 
-//    @Bean
-//    public ModelMapper modelMapper() {
-//        return new ModelMapper();
-//    }
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
 
 }

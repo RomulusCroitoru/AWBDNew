@@ -31,8 +31,7 @@ public class MemberMapper {
         Member member = new Member();
         member.setId(memberDTO.getId());
         member.setName(memberDTO.getName());
-        // În mod normal, nu am transforma ID-urile înapoi în obiecte complexe (LibraryCard, Book, etc.) într-un Mapper
-        // întrucât Mapper-urile sunt utilizate în principal pentru transformări între DTO-uri și entități
+
         return member;
     }
 }
