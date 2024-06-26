@@ -21,11 +21,13 @@ public class LibraryCardController {
         this.libraryCardService = libraryCardService;
     }
 
-    @GetMapping("")
+    // Metoda pentru a obține toate cardurile de bibliotecă
+    @GetMapping("/all")
     public ResponseEntity<List<LibraryCard>> getAllLibraryCards() {
         List<LibraryCard> libraryCards = libraryCardService.getAllLibraryCards();
         return ResponseEntity.ok(libraryCards);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<LibraryCard> getLibraryCardById(@PathVariable Long id) {

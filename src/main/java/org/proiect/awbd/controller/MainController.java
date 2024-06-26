@@ -22,29 +22,29 @@ public class MainController {
     private final GenreService genreService;
     private final LibraryService libraryService;
     private final PublisherService publisherService;
-    private final MemberService  memberService;
-
+    private final MemberService memberService;
+    private final LibraryCardService libraryCardService; // Adăugăm serviciul LibraryCardService
 
     public MainController(AuthorService authorService, BookService bookService,
-                           GenreService genreService,LibraryService libraryService,
-                          PublisherService publisherService,
-                          MemberService  memberService) {
+                          GenreService genreService, LibraryService libraryService,
+                          PublisherService publisherService, MemberService memberService,
+                          LibraryCardService libraryCardService) {
         this.authorService = authorService;
         this.bookService = bookService;
         this.genreService = genreService;
         this.libraryService = libraryService;
         this.publisherService = publisherService;
         this.memberService = memberService;
-
+        this.libraryCardService = libraryCardService; // Injectăm LibraryCardService
     }
 
     @GetMapping("/")
     public String index(HttpServletRequest request) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null && auth.isAuthenticated() && !"anonymousUser".equals(auth.getPrincipal())) {
-            return "redirect:/home"; // Redirecționează către /home dacă utilizatorul este autentificat
+            return "redirect:/home";  // Redirecționează către /home dacă utilizatorul este autentificat
         } else {
-            return "redirect:/login"; // Redirecționează către /login dacă utilizatorul nu este autentificat
+            return "redirect:/login";  // Redirecționează către /login dacă utilizatorul nu este autentificat
         }
     }
 
@@ -82,6 +82,13 @@ public class MainController {
         model.addAttribute("publishers", publishers);
         model.addAttribute("memberNames", memberNames);
 
+        // Adăugăm cardurile de bibliotecă doar dacă utilizatorul este ADMIN
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() &&
+                authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+            List<LibraryCard> libraryCards = libraryCardService.getAllLibraryCards();
+            model.addAttribute("libraryCards", libraryCards);
+        }
 
         return "main";
     }
