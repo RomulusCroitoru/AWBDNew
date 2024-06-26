@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Member_Book;
 DROP TABLE IF EXISTS Book;
-DROP TABLE IF EXISTS LibraryCard;
+DROP TABLE IF EXISTS library_card;
 DROP TABLE IF EXISTS Author;
 DROP TABLE IF EXISTS Library;
 DROP TABLE IF EXISTS Genre;
@@ -9,8 +9,6 @@ DROP TABLE IF EXISTS Publisher;
 DROP TABLE IF EXISTS USER_AUTHORITY;
 DROP TABLE IF EXISTS USER;
 DROP TABLE IF EXISTS AUTHORITY;
-
-
 
 CREATE TABLE Author (
                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -41,12 +39,13 @@ CREATE TABLE Publisher (
 );
 
 
-CREATE TABLE LibraryCard (
-                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                             cardNumber VARCHAR(255) NOT NULL,
-                             member_id BIGINT UNIQUE,
-                             CONSTRAINT FK_Member_LibraryCard FOREIGN KEY (member_id) REFERENCES Member(id)
+CREATE TABLE library_card (
+                              id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                              card_number VARCHAR(255) NOT NULL,
+                              member_id BIGINT,
+                              CONSTRAINT FK_member_library_card FOREIGN KEY (member_id) REFERENCES member(id)
 );
+
 
 CREATE TABLE Book (
                       id BIGINT AUTO_INCREMENT PRIMARY KEY,

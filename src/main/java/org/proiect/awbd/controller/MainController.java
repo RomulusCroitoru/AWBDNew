@@ -2,8 +2,6 @@ package org.proiect.awbd.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.proiect.awbd.dtos.AuthorDTO;
-import org.proiect.awbd.dtos.BookDTO;
-import org.proiect.awbd.dtos.GenreDTO;
 import org.proiect.awbd.dtos.MemberDTO;
 import org.proiect.awbd.model.*;
 import org.proiect.awbd.service.*;
@@ -21,23 +19,22 @@ public class MainController {
 
     private final AuthorService authorService;
     private final BookService bookService;
-    private final LibraryService libraryService;
-    private final MemberService memberService;
-    private final PublisherService publisherService;
     private final GenreService genreService;
+    private final LibraryService libraryService;
+    private final PublisherService publisherService;
+    private final MemberService  memberService;
 
 
     public MainController(AuthorService authorService, BookService bookService,
-                          LibraryService libraryService,
-                          MemberService memberService,
+                           GenreService genreService,LibraryService libraryService,
                           PublisherService publisherService,
-                          GenreService genreService) {
+                          MemberService  memberService) {
         this.authorService = authorService;
         this.bookService = bookService;
-        this.libraryService = libraryService;
-        this.memberService = memberService;
-        this.publisherService = publisherService;
         this.genreService = genreService;
+        this.libraryService = libraryService;
+        this.publisherService = publisherService;
+        this.memberService = memberService;
 
     }
 
@@ -73,25 +70,19 @@ public class MainController {
     public String home(Model model) {
         List<AuthorDTO> authors = authorService.findAll();
         List<Book> books = bookService.getAllBooks();
-        List<Library> libraries = libraryService.getAllLibraries();
-        List<Member> members = memberService.getAllMembers();
-        List<Publisher> publishers = publisherService.getAllPublishers();
         List<Genre> genres = genreService.getAllGenres();
+        List<Library> libraries = libraryService.getAllLibraries();
+        List<Publisher> publishers = publisherService.getAllPublishers();
+        List<String> memberNames = memberService.getAllMemberNames();
 
         model.addAttribute("authors", authors);
         model.addAttribute("books", books);
-        model.addAttribute("libraries", libraries);
-        model.addAttribute("members", members);
-        model.addAttribute("publishers", publishers);
         model.addAttribute("genres", genres);
+        model.addAttribute("libraries", libraries);
+        model.addAttribute("publishers", publishers);
+        model.addAttribute("memberNames", memberNames);
 
 
         return "main";
     }
-
-//    @GetMapping("/login")
-//    public String showLogInForm(){ return "login"; }
-//
-//    @GetMapping("/access_denied")
-//    public String accessDeniedPage(){ return "accessDenied"; }
 }

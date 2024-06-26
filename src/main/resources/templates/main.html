@@ -60,14 +60,14 @@
         <li th:each="book : ${books}" th:text="${book.title}"></li>
     </ul>
 
+    <h2>Genres</h2>
+    <ul>
+        <li th:each="genre : ${genres}" th:text="${genre.name}"></li>
+    </ul>
+
     <h2>Library</h2>
     <ul>
         <li th:each="library : ${libraries}" th:text="${library.name}"></li>
-    </ul>
-
-    <h2>Member</h2>
-    <ul>
-        <li th:each="member : ${members}" th:text="${member.name}"></li>
     </ul>
 
     <h2>Publisher</h2>
@@ -75,11 +75,10 @@
         <li th:each="publisher : ${publishers}" th:text="${publisher.name}"></li>
     </ul>
 
-    <h2>Genres</h2>
+    <h2>Members</h2>
     <ul>
-        <li th:each="genre : ${genres}" th:text="${genre.name}"></li>
+        <li th:each="member : ${memberNames}" th:text="${member}"></li>
     </ul>
-
 
     <div class="return-link">
         <a href="/login" th:href="@{/login}">Back to Login</a>

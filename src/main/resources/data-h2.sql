@@ -46,6 +46,6 @@ INSERT INTO Member_Book (member_id, book_id) VALUES
                                                  (1, 3);  -- John Doe a împrumutat To Kill a Mockingbird
 
 -- Inserare date în tabela LibraryCard
-INSERT INTO LibraryCard (cardNumber, member_id) VALUES
+INSERT INTO library_card (card_number, member_id) VALUES
     ('ABC123', 1);  -- Cardul membrului John Doe
 

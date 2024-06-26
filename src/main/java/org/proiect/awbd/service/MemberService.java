@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MemberService {
@@ -32,6 +33,13 @@ public class MemberService {
 
     public void deleteMemberById(Long id) {
         memberRepository.deleteById(id);
+    }
+
+    public List<String> getAllMemberNames() {
+        List<Member> members = getAllMembers();
+        return members.stream()
+                .map(Member::getName)
+                .collect(Collectors.toList());
     }
 
     // Alte metode specifice pentru operațiile CRUD sau de business

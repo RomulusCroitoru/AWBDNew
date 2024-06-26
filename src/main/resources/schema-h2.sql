@@ -1,16 +1,14 @@
 DROP TABLE IF EXISTS Member_Book;
 DROP TABLE IF EXISTS Book;
-DROP TABLE IF EXISTS LibraryCard;
+DROP TABLE IF EXISTS library_card;
 DROP TABLE IF EXISTS Author;
 DROP TABLE IF EXISTS Library;
 DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Member;
 DROP TABLE IF EXISTS Publisher;
 DROP TABLE IF EXISTS USER_AUTHORITY;
-DROP TABLE IF EXISTS USER;
+DROP TABLE IF EXISTS USERS;
 DROP TABLE IF EXISTS AUTHORITY;
-
-
 
 CREATE TABLE Author (
                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -41,12 +39,13 @@ CREATE TABLE Publisher (
 );
 
 
-CREATE TABLE LibraryCard (
-                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                             cardNumber VARCHAR(255) NOT NULL,
-                             member_id BIGINT UNIQUE,
-                             CONSTRAINT FK_Member_LibraryCard FOREIGN KEY (member_id) REFERENCES Member(id)
+CREATE TABLE library_card (
+                              id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                              card_number VARCHAR(255) NOT NULL,
+                              member_id BIGINT,
+                              CONSTRAINT FK_member_library_card FOREIGN KEY (member_id) REFERENCES member(id)
 );
+
 
 CREATE TABLE Book (
                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -72,7 +71,7 @@ CREATE TABLE Member_Book (
 
 );
 
-CREATE TABLE USER(
+CREATE TABLE USERS(
                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
                      username VARCHAR(50) NOT NULL,
                      password VARCHAR(100) NOT NULL,
@@ -90,7 +89,7 @@ CREATE TABLE AUTHORITY(
 CREATE TABLE USER_AUTHORITY(
                                user_id BIGINT,
                                authority_id BIGINT,
-                               FOREIGN KEY (user_id) REFERENCES USER(id),
+                               FOREIGN KEY (user_id) REFERENCES USERS(id),
                                FOREIGN KEY (authority_id) REFERENCES AUTHORITY(id),
                                PRIMARY KEY (user_id, authority_id)
 );
