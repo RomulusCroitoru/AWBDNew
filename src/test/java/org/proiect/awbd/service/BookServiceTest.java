@@ -16,7 +16,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.proiect.awbd.dtos.BookDTO;
 import org.proiect.awbd.mappers.BookMapper;
 import org.proiect.awbd.model.*;
+import org.springframework.test.context.ActiveProfiles;
 
+@ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
 

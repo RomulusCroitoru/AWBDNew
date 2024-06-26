@@ -2,10 +2,12 @@ package org.proiect.awbd.model;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@ActiveProfiles("test")
 public class PublisherEntityTest {
 
     @Test
