@@ -33,7 +33,7 @@ public class GenreController {
         }
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Genre> createGenre(@RequestBody Genre genre) {
         Genre savedGenre = genreRepository.save(genre);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedGenre);

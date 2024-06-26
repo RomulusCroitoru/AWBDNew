@@ -34,7 +34,7 @@ public class BookController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Book createdBook = bookService.saveBook(book);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
@@ -61,6 +61,4 @@ public class BookController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    // Alte metode pentru alte operații CRUD
 }

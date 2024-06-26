@@ -21,7 +21,7 @@ public class LibraryController {
         this.libraryService = libraryService;
     }
 
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<Library>> getAllLibraries() {
         List<Library> libraries = libraryService.getAllLibraries();
         return ResponseEntity.ok(libraries);
@@ -34,7 +34,7 @@ public class LibraryController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Library> createLibrary(@RequestBody Library library) {
         Library createdLibrary = libraryService.saveLibrary(library);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLibrary);
@@ -61,6 +61,4 @@ public class LibraryController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    // Alte metode pentru alte operații CRUD
 }

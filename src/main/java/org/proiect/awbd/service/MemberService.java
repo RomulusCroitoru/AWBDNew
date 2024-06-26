@@ -42,5 +42,4 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
-    // Alte metode specifice pentru operațiile CRUD sau de business
 }

@@ -24,5 +24,4 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    // Alte metode de tratare a excepțiilor
 }

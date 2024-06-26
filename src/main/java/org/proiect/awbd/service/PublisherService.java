@@ -48,6 +48,4 @@ public class PublisherService {
         }
     }
 
-    // Alte metode specifice pentru operațiile CRUD sau de business
-
 }

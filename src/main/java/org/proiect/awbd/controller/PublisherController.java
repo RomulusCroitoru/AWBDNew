@@ -34,7 +34,7 @@ public class PublisherController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("")
     public Publisher createPublisher(@Valid @RequestBody Publisher publisher) {
         return publisherService.savePublisher(publisher);
     }

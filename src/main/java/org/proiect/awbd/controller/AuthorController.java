@@ -33,7 +33,7 @@ public class AuthorController {
         }
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Author> createAuthor(@RequestBody Author author) {
         Author savedAuthor = authorRepository.save(author);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedAuthor);

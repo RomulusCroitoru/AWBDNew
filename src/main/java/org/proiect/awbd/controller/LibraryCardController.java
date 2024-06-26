@@ -63,6 +63,4 @@ public class LibraryCardController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    // Alte metode pentru alte operații CRUD
 }

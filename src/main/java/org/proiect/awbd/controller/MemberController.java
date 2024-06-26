@@ -34,7 +34,7 @@ public class MemberController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<Member> createMember(@RequestBody Member member) {
         Member createdMember = memberService.saveMember(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMember);
@@ -61,6 +61,4 @@ public class MemberController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    // Alte metode pentru alte operații CRUD
 }

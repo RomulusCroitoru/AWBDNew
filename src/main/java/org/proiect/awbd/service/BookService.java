@@ -34,5 +34,4 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    // Alte metode specifice pentru operațiile CRUD sau de business
 }
